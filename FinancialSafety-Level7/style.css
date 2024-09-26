@@ -1,0 +1,150 @@
+:root {
+  --color-background: #f5f5f5;
+  --color-text: #333;
+  --color-primary: #4caf50;
+  --color-secondary: #ff9800;
+  --color-accent: #f44336;
+  --font-family: 'Roboto', sans-serif;
+  --font-size-base: 1rem;
+  --border-radius: 12px;
+  --box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.game-container {
+  width: 90vw;
+  max-width: 640px;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  padding: 2em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.hangman-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.hangman-word {
+  font-size: 1.8em;
+  letter-spacing: 0.15em;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.hangman-hint {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+  color: var(--color-secondary);
+  font-style: italic;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hangman-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.hangman-letters button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hangman-letters button:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+.hangman-letters button:disabled {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.hangman-status {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hangman-drawing {
+  background: linear-gradient(135deg, #e0e0e0, #ffffff);
+  border: 2px solid #ccc;
+  border-radius: var(--border-radius);
+  margin-bottom: 1em;
+  box-shadow: var(--box-shadow);
+}
+
+.btn {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 1em;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  display: block;
+  z-index: 10;
+}
+
+.btn:hover {
+  background-color: var(--color-secondary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 640px) {
+  .game-container {
+    padding: 1.5em;
+  }
+
+  .hangman-word {
+    font-size: 1.4em;
+  }
+
+  .btn {
+    font-size: 0.9em;
+    padding: 0.4em 0.8em;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

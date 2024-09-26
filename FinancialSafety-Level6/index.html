@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Escape Room</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="game-container">
+      <div id="game-intro" class="game-section">
+        <h2>Welcome to the Cybersecurity Escape Room!</h2>
+        <img
+          src="images/cybersecurity.png"
+          alt="computers"
+          class="game-image"
+        />
+        <p>
+          You must solve puzzles and complete tasks to secure your digital life
+          and escape from a simulated cyber attack.
+        </p>
+        <p>You have a limited amount of time to escape. Good luck!</p>
+        <label for="user-name">Enter your name:</label>
+        <div class="input-button-group">
+          <input type="text" id="user-name" name="user-name" />
+          <button id="start-game" class="submit">Start Game</button>
+        </div>
+      </div>
+
+      <div id="game-over" class="game-section" style="display: none;">
+        <h2>Game Over!</h2>
+        <p id="game-over-message"></p>
+        <div>
+          <img
+            src="images\hacked.png"
+            alt="You've been hacked"
+            class="gameover-image"
+          />
+        </div>
+        <button id="restart-task" class="restart">Restart Task</button>
+      </div>
+
+      <div id="win-screen" class="game-section" style="display: none;">
+        <h2>Congratulations!</h2>
+        <p>You've successfully protected yourself against the hackers!</p>
+        <div>
+          <img
+            src="images\congratulations.jpg"
+            alt="You've won"
+            class="win-image"
+          />
+        </div>
+      </div>
+
+      <audio id="correct-audio" src="audio/correct.mp3"></audio>
+      <audio id="game-over-audio" src="audio/incorrect.mp3"></audio>
+      <audio id="incorrect2-audio" src="audio/incorrect2.mp3"></audio>
+      <audio id="congrats-audio" src="audio/congrats.mp3"></audio>
+      <audio id="time-reminder-audio" src="audio/timer.mp3"></audio>
+
+      <!-- Task 1 -->
+      <div id="task-1" class="game-section" style="display: none;">
+        <h2>Task 1: Identifying Suspicious Emails</h2>
+        <p>Read your emails and identify which of the emails are phishing attempts:</p>
+        <div class="timer">Time left: <span id="timer1">120</span> seconds</div>
+        <div class="email-container">
+          <details
+            class="email-gmail-style"
+            data-phishing="true"
+            data-marker="A"
+          >
+            <summary class="email-header">
+              <span class="email-sender"> (A) Banking Services Team</span>
+              <span class="email-subject"
+                >Urgent: Confirm Your Bank Details for Unclaimed Funds!</span
+              >
+              <span class="email-date">May 3</span>
+            </summary>
+            <div class="email-body">
+              <p>Dear <span id="user-name-placeholder"></span>,</p>
+              <p>
+                We are pleased to inform you that a significant amount of
+                unclaimed funds has been identified in your account. To claim
+                these funds, please verify your banking information by clicking
+                the link below.
+              </p>
+              <p>
+                <a
+                  href="https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+                  target="_blank"
+                  >[Verify Now]</a
+                >
+              </p>
+              <p>
+                Failure to confirm your details within 24 hours will result in
+                the forfeiture of these funds.
+              </p>
+              <p>Thank you for your prompt attention to this matter.</p>
+              <p>Sincerely, Banking Services Team</p>
+            </div>
+          </details>
+          <details
+            class="email-gmail-style"
+            data-phishing="false"
+            data-marker="B"
+          >
+            <summary class="email-header">
+              <span class="email-sender"> (B) Financial Education Team</span>
+              <span class="email-subject"
+                >Join Our Free Financial Literacy Webinar!</span
+              >
+              <span class="email-date">May 5</span>
+            </summary>
+            <div class="email-body">
+              <p>Dear <span id="user-name-placeholder"></span>,</p>
+              <p>
+                We are excited to invite you to our upcoming webinar on
+                financial literacy. This free session will cover budgeting,
+                saving, investing, and understanding credit scores. Our experts
+                will provide valuable tips to help you manage your finances
+                effectively.
+              </p>
+              <p>Date: August 5, 2024<br />Time: 6:00 PM - 7:30 PM</p>
+              <p>
+                <a
+                  href="https://www.digitalocean.com/resources/article/ai-fraud-detection"
+                  target="_blank"
+                  >[Register Here]</a
+                >
+              </p>
+              <p>We look forward to your participation.</p>
+              <p>Best regards, Financial Education Team</p>
+            </div>
+          </details>
+          <details
+            class="email-gmail-style"
+            data-phishing="true"
+            data-marker="C"
+          >
+            <summary class="email-header">
+              <span class="email-sender">(C) The Prize Distribution Team</span>
+              <span class="email-subject">You've Won a $5,000 Cash Prize!</span>
+              <span class="email-date">May 7</span>
+            </summary>
+            <div class="email-body">
+              <p>Dear <span id="user-name-placeholder"></span>,</p>
+              <p>
+                You have been selected as the lucky winner of our $5,000 cash
+                prize! To claim your prize, please provide your personal and
+                banking details by clicking the link below.
+              </p>
+              <p>
+                <a
+                  href="https://www.cybersecurity-magazine.com/phishing-in-2024-heres-what-to-expect"
+                  target="_blank"
+                  >[Claim Your Prize]</a
+                >
+              </p>
+              <p>
+                Hurry, you must respond within 48 hours to receive your prize.
+              </p>
+              <p>Best regards, The Prize Distribution Team</p>
+            </div>
+          </details>
+          <details
+            class="email-gmail-style"
+            data-phishing="true"
+            data-marker="D"
+          >
+            <summary class="email-header">
+              <span class="email-sender"> (D) Bad Guy Records</span>
+              <span class="email-subject">
+                🎉 Exclusive VIP Party Invitation - You're Invited! 🎉</span
+              >
+              <span class="email-date">May 8</span>
+            </summary>
+            <div class="email-body">
+              <p>Dear <span id="user-name-placeholder"></span>,</p>
+              <p>
+                We hope this message finds you well! We are thrilled to extend
+                an exclusive invitation to you for an unforgettable evening of
+                fun, entertainment, and networking at our VIP Gala Party. This
+                is a private event, and only a select few have been chosen to
+                attend.
+              </p>
+              <p>
+                <a
+                  href="https://www.mimecast.com/blog/lessons-from-5-notorious-phishing-scams/"
+                  target="_blank"
+                  >[RSVP]</a
+                >
+              </p>
+              <p>
+                The first 50 guests to RSVP will receive a special gift upon
+                arrival! Don’t miss out on this chance to make memories that
+                will last a lifetime.
+              </p>
+              <p>
+                We look forward to celebrating with you at this extraordinary
+                event. If you have any questions, please do not hesitate to
+                contact our event coordinator
+              </p>
+              <p>Sincerely, The Event Planning Team</p>
+            </div>
+          </details>
+          <details
+            class="email-gmail-style"
+            data-phishing="false"
+            data-marker="E"
+          >
+            <summary class="email-header">
+              <span class="email-sender">(E) Your Financial Wellness Team</span>
+              <span class="email-subject"
+                >Tips for Smart Spending and Saving</span
+              >
+              <span class="email-date">May 10</span>
+            </summary>
+            <div class="email-body">
+              <p>Dear <span id="user-name-placeholder-2"></span>,</p>
+              <p>
+                In our ongoing effort to support your financial well-being, we
+                are pleased to share some essential tips on smart spending and
+                saving. These tips can help you make informed decisions and
+                achieve your financial goals.
+              </p>
+              <ul>
+                <li>Create a budget and stick to it</li>
+                <li>Set savings goals and prioritize them</li>
+                <li>Avoid impulse purchases</li>
+                <li>Review your financial situation regularly</li>
+              </ul>
+              <p>
+                For more detailed advice, visit our website or contact our
+                financial advisors.
+              </p>
+              <p>Sincerely, Your Financial Wellness Team</p>
+            </div>
+          </details>
+        </div>
+        <div class="selection-container">
+          <p>Select the phishing emails by their letter:</p>
+          <div class="selection-box">
+            <label><input type="checkbox" name="phishing" value="A" /> A</label>
+            <label><input type="checkbox" name="phishing" value="B" /> B</label>
+            <label><input type="checkbox" name="phishing" value="C" /> C</label>
+            <label><input type="checkbox" name="phishing" value="D" /> D</label>
+            <label><input type="checkbox" name="phishing" value="E" /> E</label>
+          </div>
+        </div>
+        <button id="submit-task-1">Submit</button>
+        <div id="task-1-result"></div>
+      </div>
+
+      <!-- Task 2 -->
+      <div id="task-2" class="game-section" style="display: none;">
+        <h2>Task 2: Monitoring Account Activity</h2>
+        <p>
+          Your credit limit is $300. Review the bank statement and identify the
+          suspicious transactions:
+        </p>
+        <div class="timer">Time left: <span id="timer2">120</span> seconds</div>
+        <div class="bank-statement">
+          <div class="transaction-header">
+            <div>Date</div>
+            <div>Description</div>
+            <div>Amount</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/01/2024</div>
+            <div>Grocery Store</div>
+            <div>$45.76</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/02/2024</div>
+            <div>Public Transportation</div>
+            <div>$15.00</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/03/2024</div>
+            <div>Coffee Shop</div>
+            <div>$5.50</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/04/2024</div>
+            <div>Book Store</div>
+            <div>$25.00</div>
+          </div>
+          <div class="transaction" data-unauthorized="true">
+            <div>01/05/2024</div>
+            <div>Online Electronics Store</div>
+            <div>$399.99</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/06/2024</div>
+            <div>Utility Bill Payment</div>
+            <div>$120.00</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/07/2024</div>
+            <div>Restaurant</div>
+            <div>$45.00</div>
+          </div>
+          <div class="transaction" data-unauthorized="true">
+            <div>01/08/2024</div>
+            <div>Luxury Hotel</div>
+            <div>$1,250.00</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/09/2024</div>
+            <div>Subscription Service</div>
+            <div>$12.99</div>
+          </div>
+          <div class="transaction" data-unauthorized="false">
+            <div>01/10/2024</div>
+            <div>Grocery Store</div>
+            <div>$60.00</div>
+          </div>
+        </div>
+        <button id="submit-task-2">Submit</button>
+        <div id="task-2-result"></div>
+      </div>
+
+      <!-- Task 3 -->
+      <div id="task-3" class="game-section" style="display: none;">
+        <h2>Task 3: Situational Questions</h2>
+        <p>
+          Drag and drop the appropriate responses to the situational questions
+          below:
+        </p>
+        <div class="timer">Time left: <span id="timer3">120</span> seconds</div>
+
+        <div class="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item">
+              <div class="question" data-correct-answer="change-password">
+                <p>
+                  You suspect that someone has hacked into your online account.
+                  What is your next step?
+                </p>
+                <div class="drop-zone" data-answer=""></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="question" data-correct-answer="notify-bank">
+                <p>
+                  Your account shows an unauthorized transaction of $100. What
+                  should you do?
+                </p>
+                <div class="drop-zone" data-answer=""></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="question" data-correct-answer="report-fraud">
+                <p>
+                  You receive an email asking for personal information, which
+                  looks suspicious. What should you do?
+                </p>
+                <div class="drop-zone" data-answer=""></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="question" data-correct-answer="enable-2fa">
+                <p>
+                  You want to enhance your security for your online account.
+                  What should you do?
+                </p>
+                <div class="drop-zone" data-answer=""></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="question" data-correct-answer="log-out-all-devices">
+                <p>
+                  You received a notification about a new device logging into
+                  your account that you don't recognize. What is your next step?
+                </p>
+                <div class="drop-zone" data-answer=""></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-controls" style="margin-bottom: 0px;margin-top: 0px;">
+            <button class="carousel-control-prev">
+              Back
+            </button>
+            <button class="carousel-control-next">
+              Next
+            </button>
+          </div>
+
+        <div class="answers">
+          <div class="answer" data-answer="change-password" draggable="true">
+            Change Password
+          </div>
+          <div class="answer" data-answer="enable-2fa" draggable="true">
+            Enable Two-Factor Authentication
+          </div>
+          <div
+            class="answer"
+            data-answer="log-out-all-devices"
+            draggable="true"
+          >
+            Log Out of All Devices
+          </div>
+          <div class="answer" data-answer="report-fraud" draggable="true">
+            Report As Fraud
+          </div>
+          <div class="answer" data-answer="notify-bank" draggable="true">
+            Notify Bank
+          </div>
+        </div>
+        <button id="submit-task-3">Submit</button>
+        <div id="task-3-result"></div>
+      </div>
+      <!-- Modal -->
+      <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

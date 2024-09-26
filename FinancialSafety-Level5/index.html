@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Level 5: Secure The Document</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="game-container" class="game-container">
+      <h1>Secure Your Documents</h1>
+      <p id="score" class="score">Score: 0</p>
+      <img
+        id="scenario-image"
+        class="scenario-image"
+        src=""
+        alt="Scenario Image"
+      />
+      <section id="scenario-description" class="scenario-description"></section>
+      <section id="answers" class="answers"></section>
+      <div class="button-container">
+        <button id="submit" class="submit" disabled>Submit</button>
+        <button id="next" class="next" style="display: none;">Next</button>
+      </div>
+    </section>
+
+    <div id="outcome-modal" class="modal">
+      <div id="modal-content" class="modal-content">
+        <button id="close-modal" class="close-modal" onclick="closeModal()">
+          &times;
+        </button>
+        <h2>Outcome</h2>
+        <p id="outcome-message"></p>
+      </div>
+    </div>
+
+    <div id="ending-modal" class="modal">
+      <div id="ending-modal-content" class="modal-content">
+        <button id="close-ending-modal" class="close-modal" onclick="closeEndingModal()">
+          &times;
+        </button>
+        <img src="images\myfili-logo.jpg">
+        <h2>Congratulations!</h2>
+        <p>You have completed all the scenarios.</p>
+      </div>
+    </div>
+    
+    <audio id="correct-sound" src="audio/correct.mp3"></audio>
+    <audio id="incorrect-sound" src="audio/incorrect.mp3"></audio>
+    <audio id="lesson-complete-sound" src="audio/lesson-complete.mp3"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>

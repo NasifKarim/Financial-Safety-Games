@@ -1,0 +1,566 @@
+  :root {
+  --color-base: white;
+  --color-contrast: black;
+  --color-primary: limegreen;
+  --color-secondary: yellow;
+  --font-family-body: "Roboto", sans-serif;
+  --font-size-medium: 16px;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-contrast);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-medium);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.game-container {
+  width: 92%;
+  max-width: 800px;
+  padding: 2rem 2rem 0.5rem;
+  background-color: var(--color-base);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  border: 2px solid seagreen;
+  max-height: 90vh;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.game-container::-webkit-scrollbar {
+  display: none;
+}
+
+.game-image {
+  width: 450px;
+  height: auto;
+}
+
+.gameover-image,
+.win-image {
+  max-width: 450px;
+  height: auto;
+  margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+  .game-image,
+  .gameover-image,
+  .win-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+}
+
+#game-intro p {
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+#game-intro label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.input-button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.continue-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  background-color: #45a049;
+}
+
+#user-name {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#start-game {
+  background-color: #00b10c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+#start-game:hover {
+  background-color: #00b10c;
+}
+
+.email-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.email-gmail-style {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.email-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e2e8f0;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.email-marker {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.selection-container {
+  margin-top: 20px;
+}
+
+.selection-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.email-sender {
+  color: #5f6368;
+}
+
+.email-subject {
+  color: #202124;
+}
+
+.email-date {
+  color: #5f6368;
+  font-size: 0.85em;
+}
+
+.email-body {
+  padding: 15px;
+  background-color: white;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  text-align: left;
+}
+
+.email-body p {
+  margin: 10px 0;
+}
+
+.email-gmail-style[selected] {
+  background-color: var(--color-primary);
+  transform: scale(1.03);
+  color: var(--color-base);
+}
+
+/* Define the pulsing glow effect */
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    color: var(--color-primary);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+    color: var(--color-accent);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    color: var(--color-primary);
+  }
+}
+
+.email-header::before {
+  content: "MyFiLi";
+  color: var(--color-primary); 
+  margin-right: 10px;
+  display: inline-block; 
+  animation: pulseGlow 2.5s infinite; 
+}
+
+.email-gmail-style[open] .email-header::before {
+  animation: none; 
+  color: limegreen;
+}
+
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-base);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: darkgreen;
+  transform: scale(1.05);
+}
+
+.timer {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.bank-statement {
+  width: 100%;
+  background-color: #f9f9f9;
+  margin-right: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #feffbe;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.transaction.selected {
+  background-color: #87c6a5;
+  transform: scale(1.03);
+  color: var(--color-base);
+}
+
+.transaction div {
+  width: 30%;
+  text-align: left;
+}
+
+.transaction-header div {
+  width: 30%;
+  text-align: left;
+}
+
+.situational-questions {
+  display: flex;
+  flex-direction: column;
+}
+
+.questions,
+.answers {
+  width: 100%;
+  background-color: var(--color-base);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answers {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 601px) {
+  .situational-questions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .answers {
+    width: 100%;
+  }
+}
+
+.question,
+.answer {
+  background-color: var(--color-base);
+  color: var(--color-contrast);
+  border: 1px solid var(--color-primary);
+  padding: 1px;
+  margin: 1px 0;
+  width: auto;
+  border-radius: 5px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.question {
+  width: 90%;
+}
+
+.question:hover,
+.answer:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--color-primary);
+}
+
+.answer:hover {
+  background-color: black;
+}
+
+.question:active,
+.answer:active {
+  cursor: grabbing;
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.drop-zone {
+  background-color: var(--color-base);
+  padding: 15px; 
+  border-color: black;
+  border-style: groove;
+  border-radius: 10px;
+  border-width: thin;
+  min-height: 15px;
+  width: 95%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, border-color 0.2s;
+  margin-bottom: 10px; 
+}
+
+.drop-zone:hover {
+  box-shadow: 0 0 15px var(--color-primary);
+}
+
+.answer[draggable="true"] {
+  cursor: grab;
+}
+
+.answer:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--color-base);
+  margin: 10% auto;
+  padding: 20px;
+  border: 2px solid var(--color-primary);
+  width: 80%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: var(--font-family-body);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.close {
+  color: var(--color-primary);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: darkgreen;
+}
+
+.email-body > p {
+  margin-bottom: 0.5rem;
+}
+
+.email-body > ul {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.email-body > ul > li {
+  margin-bottom: 0.5rem;
+}
+
+.answer {
+  transition: background-color 0.2s, transform 0.2s;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.answers {
+  height: 50%;
+}
+
+.answer:hover {
+  background-color: rgba(254, 255, 190, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+.answer:active {
+  background-color: var(--color-primary);
+  color: var(--color-base);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-inner {
+  display: flex;
+  margin: 0px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 14px; 
+  cursor: pointer;
+  flex: 1;
+  width: 90%;
+  max-width: 45%;
+  margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  .question,
+  .drop-zone {
+    width: 60%;
+    font-size: 14px; 
+  }
+
+  .carousel-item {
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+  }  
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    padding: 8px; 
+    font-size: 14px; 
+  }
+
+  .carousel-controls {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+}

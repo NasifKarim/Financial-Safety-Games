@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Safety for Beginners - Hangman Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h2>Financial Safety Hangman Game</h2>
+      <div class="hangman-game">
+        <canvas class="hangman-drawing" width="200" height="200"></canvas>
+        <div class="hangman-word"></div>
+        <div class="hangman-hint"></div>
+        <div class="hangman-letters"></div>
+        <div class="hangman-status"></div>
+        <button class="btn restart-hangman">Restart Game</button>
+        <button class="btn next-level" style="display: none">Next Level</button>
+      </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio class="audio-correct" src="audio/correct.wav"></audio>
+    <audio class="audio-wrong" src="audio/wrong.wav"></audio>
+    <audio class="audio-game-over" src="audio/game-over.wav"></audio>
+    <audio class="audio-next" src="audio/next.wav"></audio>
+    <audio class="audio-complete" src="audio/complete.wav"></audio>
+    <!-- Game complete audio -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
